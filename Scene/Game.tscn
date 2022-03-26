@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Game.cs" type="Script" id=1]
+[ext_resource path="res://Scene/BoardPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/arial.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/ariblk.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 4 )
+
+[node name="Game" type="CenterContainer"]
+script = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1908.0
+margin_bottom = 625.0
+
+[node name="TurnPlayer" type="Label" parent="VBoxContainer"]
+margin_right = 1908.0
+margin_bottom = 117.0
+custom_fonts/font = SubResource( 1 )
+text = "TURN PLAYER
+"
+align = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 121.0
+margin_right = 1908.0
+margin_bottom = 625.0
+
+[node name="Board1" parent="VBoxContainer/CenterContainer" instance=ExtResource( 2 )]
+margin_right = 1908.0
+margin_bottom = 504.0
+
+[node name="Board2" parent="VBoxContainer/CenterContainer" instance=ExtResource( 2 )]
+margin_right = 1908.0
+margin_bottom = 504.0
+
+[node name="Control" type="Control" parent="."]
+margin_left = 954.0
+margin_top = 312.0
+margin_right = 954.0
+margin_bottom = 312.0
+
+[node name="ButtonEndTurn" type="Button" parent="Control"]
+margin_left = 756.0
+margin_top = 254.0
+margin_right = 940.0
+margin_bottom = 345.0
+custom_fonts/font = SubResource( 2 )
+text = "End Turn"
+
+[connection signal="pressed" from="Control/ButtonEndTurn" to="." method="ButtonEndTurnPressed"]
