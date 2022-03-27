@@ -14,21 +14,29 @@ public class Card : Node
 
     private void ClickCard()
     {
-        played = true;
-        EmitSignal("Card_Clicked", this);
+        if(played)
+        {
+            GetNode<Button>("Control/IncreaseHealth").Visible = !GetNode<Button>("Control/IncreaseHealth").Visible;
+            GetNode<Button>("Control/KillCard").Visible = !GetNode<Button>("Control/KillCard").Visible;
+        }
+        else
+        {
+            played = true;
+            EmitSignal("Card_Clicked", this);
+        }
     }
 
     private void MouseEnter()
     {
         if(!played) return;
-        GetNode<Button>("Control/IncreaseHealth").Visible = true;
-        GetNode<Button>("Control/KillCard").Visible = true;
+        //GetNode<Button>("Control/IncreaseHealth").Visible = true;
+        //GetNode<Button>("Control/KillCard").Visible = true;
     }
 
     private void MouseExited()
     {
         if(!played) return;
-        GetNode<Button>("Control/IncreaseHealth").Visible = false;
-        GetNode<Button>("Control/KillCard").Visible = false;
+        //GetNode<Button>("Control/IncreaseHealth").Visible = false;
+        //GetNode<Button>("Control/KillCard").Visible = false;
     }
 }
